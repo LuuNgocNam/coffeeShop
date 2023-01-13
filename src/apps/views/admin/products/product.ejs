@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layout/header.ejs", {title:"Sản Phẩm"}) %>
+
+</head>
+
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+        <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <%- include("../layout/nav_header.ejs") %>
+
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%- include("../layout/sidebar.ejs") %>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="./products/create">Thêm sản phẩm</a></h4>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">id</th>
+                                                <th scope="col">Tên sản phẩm</th>
+                                                <th scope="col">Giá</th>
+                                                <th scope="col">Loại</th>
+                                                <th scope="col">Hình ảnh</th>
+                                                <th scope="col">Mô tả</th>
+                                                <th scope="col">Trạng Thái</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for(x in products){%>
+                                            <tr>
+                                                    <td><%=(Number(x)+1)%></td>
+                                                    <td><%=products[x].name%></td>
+                                                    <td><%=products[x].price%>đ</td>
+                                                    <td><%if(products[x].cat_id){%> <%=products[x].cat_id.title%> <%}%></td>
+                                                    <td style="text-align: center"><img width="50" height="50"
+                                                        src="/static/images/<%=products[x].thumbnail%>" />
+                                                    </td>
+                                                    <td><%=products[x].status%></td>
+                                                <td>
+                                                    <%if(products[x].is_stock){%>
+                                                        <span class="label label-success">Còn hàng</span>
+                                                    <%}else{%>
+                                                        <span class="label label-danger">Hết hàng</span>
+                                                    <%}%>
+                                                </td>
+                                                <td>
+                                                    <span>
+                                                        <a href="/admin/products/edit/<%=products[x]._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                            <i class="fa fa-pencil color-muted m-r-5"></i> 
+                                                        </a>
+                                                        <a href="/admin/products/delete/<%=products[x]._id%>" onclick="if(!confirm('Delete ?')) return false; " data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
+                                                            <i class="fa fa-close color-danger"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <%}%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                                <%if(page > 1){%>
+                                                    <li class="page-item"><a class="page-link" href="/admin/products/?page=<%=page-1%>">&laquo;</a></li>
+                                                <%}%>
+                                            <%for(x in pages){%>
+                                                <%if(pages[x] ==="..."){%>
+                                                    <li class="page-item"><a class="page-link" onclick="return false;" href=""><%=pages[x]%></a></li>
+                                                <%} else {%>
+                                                    <li class="page-item <%= pages[x] == page? 'active' : '' %>"><a class="page-link" href="/admin/products/?page=<%=pages[x]%>"><%=pages[x]%></a></li>
+                                                <%}%>
+                                                
+                                                
+                                            <%}%>
+                                            <%if(page < totalPage){%>
+                                                <li class="page-item"><a class="page-link" href="/admin/products/?page=<%=page+1%>">&raquo;</a></li>
+                                            <%}%>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <!-- <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div> -->
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+	<%- include("../layout/footer.ejs") %>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layout/header.ejs", {title:"Thêm Nguyên Liệu"}) %>
+</head>
+
+
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+         <%- include("../layout/nav_header.ejs") %>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%- include("../layout/sidebar.ejs") %>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Thêm nguyên liệu</h4>
+                            <div class="basic-form">
+                                <form role="form" action="/admin/kho/store" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label>Tên sản phẩm</label>
+                                        <input type="text" required name="name" class="form-control" placeholder="Tên sản phẩm">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Loại </label>
+                                            <select id="inputState" name="cat_id" required class="form-control">
+                                                <%for(x in category){%>
+                                                    <option value=<%=category[x]._id%>> <%=category[x].title%></option>
+                                                <%}%>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                        <label>Active</label>
+                                            <select id="inputState" name="is_stock" required class="form-control">
+                                                <option value="1">Còn hàng</option>
+                                                <option selected="selected" value="0">Hết hàng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Số lượng nhập</label>
+                                            <input type="number" required name="num1" class="form-control" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Số lượng tồn</label>
+                                            <input type="number" required name="num2" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" required name="thumbnail" class="form-control-file">
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">Thêm nguyên liệu</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <!-- <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div> -->
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+	<%- include("../layout/footer.ejs") %>
+
+
+</html>

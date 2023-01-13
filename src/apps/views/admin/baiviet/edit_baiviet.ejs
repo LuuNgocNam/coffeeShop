@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layout/header.ejs", {title:"Sửa Bài Viết"}) %>
+
+
+</head>
+
+
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <%- include("../layout/nav_header.ejs") %>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%- include("../layout/sidebar.ejs") %>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Sửa Bài Viết</h4>
+                            <div class="basic-form">
+                                <form role="form" action="/admin/baiviet/update/<%=baiviet._id%>" method="POST" enctype="multipart/form-data">                                   
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Tên bài viết</label>
+                                            <input type="text" name="name" required class="form-control" placeholder="Tên bài viết" value="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Tác giả</label>
+                                            <input type="text" name="author" required class="form-control" placeholder="Tác giả" value="">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bình luận</label>
+                                        <input type="number" name="comment" required class="form-control" placeholder="Bình luận" value="">
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Nội dung</label>
+                                            <input type="text" name="content" required class="form-control" placeholder="Nội dung" value="">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Ngày</label>
+                                            <input type="date" name="day" required class="form-control" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <img src="/static/images/<%=baiviet.thumbnail%>" width="100" height="100">
+                                        <input type="file" name="thumbnail" class="form-control-file">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-dark">Sửa bài viết</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <!-- <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div> -->
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+	<%- include("../layout/footer.ejs") %>
+
+</body>
+
+</html>

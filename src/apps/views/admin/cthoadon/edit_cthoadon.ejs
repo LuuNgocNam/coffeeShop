@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../layout/header.ejs", {title:"Sửa Hóa Đơn"}) %>
+
+</head>
+
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <%- include("../layout/nav_header.ejs") %>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%- include("../layout/sidebar.ejs") %>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Sửa Mô tả</h4>
+                            <div class="basic-form">
+                                <form action="/admin/cthoadon/update/<%=cthoadon.id%>" method="post">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Tên sản phẩm</label>
+                                            <input type="text" name="name" required class="form-control" placeholder="Tên sản phẩm">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Số lượng</label>
+                                            <input type="number" name="qty" required class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Giá</label>
+                                            <input type="text" value=<%=cthoadon.price%> name="price" required class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Tổng tiền</label>
+                                            <input type="text" name="price" required class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">Sửa Thông Tin Hóa Đơn</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <!-- <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div> -->
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+	<%- include("../layout/footer.ejs") %>
+</body>
+
+</html>
