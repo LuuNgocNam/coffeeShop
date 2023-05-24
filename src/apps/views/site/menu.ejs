@@ -58,7 +58,9 @@
 					<li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
 					<li class="nav-item cart"><a href="/cart" class="nav-link"><span
 								class="icon icon-shopping_cart"></span><span
-								class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>
+								class="bag d-flex justify-content-center align-items-center"><small>
+									<%= totalCartItems %>
+								</small></span></a>
 					</li>
 				</ul>
 			</div>
@@ -128,13 +130,15 @@
 							<div class="form-group">
 								<div class="input-wrap">
 									<div class="icon"><span class="ion-md-calendar"></span></div>
-									<input type="text" name="day" class="form-control appointment_date" placeholder="Date">
+									<input type="text" name="day" class="form-control appointment_date"
+										placeholder="Date">
 								</div>
 							</div>
 							<div class="form-group ml-md-4">
 								<div class="input-wrap">
 									<div class="icon"><span class="ion-ios-clock"></span></div>
-									<input type="text" name="time" class="form-control appointment_time" placeholder="Time">
+									<input type="text" name="time" class="form-control appointment_time"
+										placeholder="Time">
 								</div>
 							</div>
 							<div class="form-group ml-md-4">
@@ -202,7 +206,9 @@
 																		<p>
 																			<%=products[x].status%>
 																		</p>
-																		<p class="price"><span><%=products[x].price%>đ</span></p>
+																		<p class="price"><span>
+																				<%=products[x].price%>đ
+																			</span></p>
 																		<p><button type="submit"
 																				class="btn btn-primary btn-outline-primary">Add
 																				to Cart</button></p>
@@ -235,7 +241,8 @@
 																		<%=products[x].status%>
 																	</p>
 																	<p class="price"><span>
-																			<%=products[x].price%>đ</span></p>
+																			<%=products[x].price%>đ
+																		</span></p>
 																	<p><a href="cart.html"
 																			class="btn btn-primary btn-outline-primary">Add
 																			to cart</a>
