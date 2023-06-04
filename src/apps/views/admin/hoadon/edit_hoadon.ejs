@@ -58,21 +58,21 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Tên khách hàng</label>
-                                            <input type="text" name="name" required class="form-control" placeholder="Tên khách hàng">
+                                            <input type="text" value="<%=hoadon.name%>" name="name" required class="form-control" placeholder="Tên khách hàng">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>số điện thoại</label>
-                                            <input type="number" name="phone" required class="form-control">
+                                            <input type="number" value="<%=hoadon.phone%>" name="phone" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Email</label>
-                                            <input type="text" value=<%=hoadon.email%> name="email" required class="form-control" placeholder="Email">
+                                            <input type="text" value="<%=hoadon.email%>" name="email" required class="form-control" placeholder="Email">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Tổng tiền</label>
-                                            <input type="text" name="price" required class="form-control" placeholder="">
+                                            <input type="text" value="<%=hoadon.price%>" name="price" required class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -94,7 +94,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label>Ngày</label>
-                                            <input type="date"  name="day" required class="form-control">
+                                            <input type="date" value="<%=hoadon.day%>"  name="day" required class="form-control">
                                         </div>
                                     </div>
                                     <% for(x in hoadon.products){%>

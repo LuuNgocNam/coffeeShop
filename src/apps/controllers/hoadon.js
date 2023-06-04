@@ -52,6 +52,7 @@ const store = async (req, res)=>{
 const edit = async (req, res)=>{
     const id = req.params.id;
     const hoadon = await HoadonModel.findById(id)
+    console.log(hoadon)
     res.render('admin/hoadon/edit_hoadon', {
         data : {}, 
         hoadon

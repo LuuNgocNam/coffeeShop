@@ -115,6 +115,7 @@ const buyProduct = async (req, res) => {
     (total, item) => (total += item.price * item.qty),
     0
   );
+  console.log(totalPrice);
   let arrProd = [];
   products.forEach((item, index) => {
     arrProd.push({
@@ -165,9 +166,9 @@ const buyProduct = async (req, res) => {
             day: body.day,
             products: arrProduct,
             price: totalPrice,
+            is_stock: true,
           };
           if (payment.links[i].rel === "approval_url") {
-            req.session.cart = [];
             const bill = await HoadonModel.create(dataBill);
             products.map(async (item) => {
               let dataCTHD = {
@@ -181,6 +182,7 @@ const buyProduct = async (req, res) => {
               const items = req.session.cart;
               const viewPath = req.app.get("views");
               if (body.method == "Đặt đồ online") {
+                console.log(body);
                 const html = await ejs.renderFile(
                   path.join(viewPath, "site/email.ejs"),
                   {
@@ -189,7 +191,7 @@ const buyProduct = async (req, res) => {
                     email: body.email,
                     day: body.day,
                     totalPrice: totalPrice,
-                    items,
+                    items: products ,
                   }
                 );
                 await transporter.sendMail({
@@ -199,9 +201,8 @@ const buyProduct = async (req, res) => {
                   html,
                 });
               }
-
             });
-
+            req.session.cart = [];
             res.redirect(payment.links[i].href);
           }
         }
